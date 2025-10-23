@@ -3,30 +3,42 @@ package lab4;
 import java.util.*;
 import java.io.*;
 
-/**Demonstrate the binary tree and its methods
+import static java.lang.System.out;
+
+/**
+ * Demonstrate the binary tree and its methods
+ *
  * @author Abby Pitcairn
  * @version October 18, 2025
  */
 public class Lab4 {
-    
-    /**Main method to run Lab 4. 
+
+    /**
+     * Main method to run Lab 4.
+     *
      * @param args - not applicable.
      */
     public static void main(String[] args) {
-        
+
         // Create list of Integers from data file.
         List<Integer> data = loadNumbersFromFile(args[0]);
 
         // Create a new empty MyBinaryTree.
         MyBinaryTree<Integer> tree = new MyBinaryTree<>();
-        
+
         // Add the data to the tree.
         tree.buildTree(data);
 
+        tree.breadthFirstPrint();
+
+        out.println(tree.search(12));
+        out.println(tree.search(3));
     }
 
-    /**Create a List of Integers from a given filepath with data
-     * separated by new lines. 
+    /**
+     * Create a List of Integers from a given filepath with data
+     * separated by new lines.
+     *
      * @param filename - the path to the file
      * @return a List of Integers read from the file
      */
@@ -35,10 +47,10 @@ public class Lab4 {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = br.readLine()) != null) {
-            numbers.add(Integer.parseInt(line.trim()));
+                numbers.add(Integer.parseInt(line.trim()));
             }
         } catch (IOException e) {
-            System.out.println("Error reading file: " + e.getMessage());
+            out.println("Error reading file: " + e.getMessage());
         }
         return numbers;
     }
