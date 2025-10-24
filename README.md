@@ -2,6 +2,7 @@
 Repository for Lab 4
 
 Richard Diekema
+Phillip Bergeron
 
 ## Lab Summary
 
